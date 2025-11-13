@@ -1,27 +1,61 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import {
+  Button,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+import SampleTurboModule from './specs/NativeSampleModule';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+function App(): React.JSX.Element {
+  const [value, setValue] = React.useState('');
+  const [reversedValue, setReversedValue] = React.useState('');
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+  const onPress = () => {
+    const revString = SampleTurboModule.reverseString(value);
+    setReversedValue(revString);
+    console.log('Button pressed, but Native Module is not linked.');
+    
+  };
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Text style={styles.title}>
+          Welcome to C++ Turbo Native Module Example
+        </Text>
+        <Text>Write down here he text you want to revert</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Write your text here"
+          onChangeText={setValue}
+          value={value}
+        />
+        <Button title="Reverse" onPress={onPress} />
+        <Text>Reversed text: {reversedValue}</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 18,
+    marginBottom: 20,
+  },
+  textInput: {
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    marginTop: 10,
   },
 });
 

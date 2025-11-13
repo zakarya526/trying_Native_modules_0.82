@@ -11,6 +11,8 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		CEAAAA012EC5D00000AAA111 /* SampleNativeModuleProvider.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE4E12622EC5C6840073CC7D /* SampleNativeModuleProvider.mm */; };
+		CEAAAA022EC5D00000AAA222 /* NativeSampleModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5CB65F2EC5C305003F967B /* NativeSampleModule.cpp */; };
 		F494486E74099A0E89C0CB92 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,11 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-SampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SampleApp/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SampleApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE4E12612EC5C6840073CC7D /* SampleNativeModuleProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleNativeModuleProvider.h; sourceTree = "<group>"; };
+		CE4E12622EC5C6840073CC7D /* SampleNativeModuleProvider.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SampleNativeModuleProvider.mm; sourceTree = "<group>"; };
+		CE5CB65E2EC5C305003F967B /* NativeSampleModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeSampleModule.h; sourceTree = "<group>"; };
+		CE5CB65F2EC5C305003F967B /* NativeSampleModule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NativeSampleModule.cpp; sourceTree = "<group>"; };
+		CE5CB6612EC5C387003F967B /* SampleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -70,11 +77,15 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				CE4E12612EC5C6840073CC7D /* SampleNativeModuleProvider.h */,
+				CE4E12622EC5C6840073CC7D /* SampleNativeModuleProvider.mm */,
+				CE5CB6602EC5C305003F967B /* shared */,
 				13B07FAE1A68108700A75B9A /* SampleApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				CE5CB6612EC5C387003F967B /* SampleApp-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -96,6 +107,15 @@
 				5709B34CF0A7D63546082F79 /* Pods-SampleApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE5CB6602EC5C305003F967B /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				CE5CB65E2EC5C305003F967B /* NativeSampleModule.h */,
+				CE5CB65F2EC5C305003F967B /* NativeSampleModule.cpp */,
+			);
+			path = shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +151,7 @@
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 2610;
 					};
 				};
 			};
@@ -247,6 +267,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
+				CEAAAA012EC5D00000AAA111 /* SampleNativeModuleProvider.mm in Sources */,
+				CEAAAA022EC5D00000AAA222 /* NativeSampleModule.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +297,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SampleApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "SampleApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -302,6 +325,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SampleApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "SampleApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
