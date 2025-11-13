@@ -15,6 +15,9 @@ function App(): React.JSX.Element {
 
   const onPress = () => {
     const revString = SampleTurboModule.reverseString(value);
+    SampleTurboModule.getConstants
+      ? console.log('Constants:', SampleTurboModule.getConstants())
+      : null; 
     setReversedValue(revString);
     console.log('Button pressed, but Native Module is not linked.');
     
